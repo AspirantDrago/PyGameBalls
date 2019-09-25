@@ -15,6 +15,8 @@ class Ball:
         pygame.draw.circle(self.screen, self.color, self.pos, self.radius)
 
     def update(self):
+        self.pos[1] = min(self.pos[1] + self.speed / fps, height - self.radius)
+        pygame.draw.circle(self.screen, self.color, list(map(int, self.pos)), self.radius)
         return False
 
 
@@ -41,5 +43,4 @@ while running:
             balls.append(Ball(event.pos, screen2))
     screen.blit(screen2, (0, 0))
     pygame.display.flip()
-    print(balls)
 pygame.quit()
